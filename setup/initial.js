@@ -56,6 +56,15 @@ var sql2 =  "insert into pa_custemployee" +
     "(startdate,enddate,lastname,firstname,personid,role,createtime,creator,modifytime,modifier)" +
     "values('2015-02-01','2099-12-31','John','Deo',1,1,'2015-02-01','system','2015-02-01','system');";
 
+
+var sql3 ="insert into sys_personbasicinfo " +
+    "(lastname,firstname,pername,phonenum,password,createtime,creator,modifytime,modifier)" +
+    "values('Smith','Sam','Sam Smith','13712345678','passw','2015-02-01','system','2015-02-01','system');" ;
+var sql4 =  "insert into pa_custemployee" +
+    "(startdate,enddate,lastname,firstname,personid,role,createtime,creator,modifytime,modifier)" +
+    "values('2015-02-01','2099-12-31','Smith','Sam',2,2,'2015-02-01','system','2015-02-01','system');";
+
+
 //execute the create table script
 mysqlpool.getConnection(function(err,conn){
     // connect error
@@ -84,6 +93,12 @@ mysqlpool.getConnection(function(err,conn){
                 },
                 function(cb){
                     conn.query(sql2,cb)
+                },
+                function(cb){
+                    conn.query(sql3,cb)
+                },
+                function(cb){
+                    conn.query(sql4,cb)
                 }
             ],
             function (err) {

@@ -20,4 +20,12 @@ module.exports = function(app){
     app.options('/login/',option);
     app.post('/login/',authenticate.auth);
 
+
+    app.get('/app/restricted/:id',mustBe.authorized("admin.view",function (req,res){
+            console.log('user ' + req.user.first_name+' '+req.user.last_name+'is calling /app/restricted');
+            res.json({
+                name:req.user.first_name+' ' +req.user.last_name
+            });
+        })
+    );
 };
