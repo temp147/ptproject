@@ -19,7 +19,7 @@ var mysqlpool =  mysql.createPool({
 function personinfo(){
 }
 
-module.exports = new personinfo();
+
 
 
 personinfo.prototype.getauthinfo= function (mobile,cb) {
@@ -45,3 +45,4 @@ personinfo.prototype.getauthinfo= function (mobile,cb) {
     })
 };
 
+module.exports = new personinfo();

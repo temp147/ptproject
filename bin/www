@@ -15,6 +15,12 @@ var http = require('http');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+//load model
+
+var CoffeeScript = require('coffee-script');
+// CoffeeScript.register();
+require("./../lib/modelloader.js");
+
 /**
  * Create HTTP server.
  */
