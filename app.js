@@ -39,6 +39,12 @@ var app = express();
 app.set('env',config.env);
 //use jwt to protect api
 
+
+//load models in the app
+app.set('models', require('./models/index.js'));
+
+
+
 app.use('/app', expressJwt({secret: secret}));
 //app.use('/schedules', expressJwt({secret: secret}));
 
