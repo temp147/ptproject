@@ -19,11 +19,11 @@ var mysqlpool =  mysql.createPool({
     port:  config.mysqlport
 });
 
-//todo:using sequelize to initial tables
-var models = require('./../models/index.js');
-models.sync({force:true});
+//using sequelize to initial tables
+var sequelize = require('./../models/index.js').sequelize;
+sequelize.sync({force:true});
 
-
+//useing mysql driver to initial database
 function loadsqlfile(file,cb){
     fs.exists(file,function(exits){
         var sqlquery=[];

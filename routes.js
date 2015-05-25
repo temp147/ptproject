@@ -4,7 +4,7 @@
  */
 
 var authenticate = require('./function/authenticate');
-
+var loginauth = require('./function/loginauth');
 
 var mustBe = require("mustbe").routeHelpers();
 
@@ -28,4 +28,6 @@ module.exports = function(app){
             });
         })
     );
+    //todo test using sequelize to get info
+    app.get('/user/:id',loginauth.getuser);
 };

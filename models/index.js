@@ -12,9 +12,14 @@ var models = [
 //    'Task',
     'user'
 ];
+//export models;
 models.forEach(function(model) {
     module.exports[model] = sequelize.import(__dirname + '/' + model);
 });
+
+//export sequelize
+module.exports.sequelize=sequelize;
+
 
 // describe relationships
 /*
