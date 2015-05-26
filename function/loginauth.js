@@ -1,7 +1,6 @@
 /**
  * Created by root on 5/21/15.
 
-app = require('./../app.js');
 
 var User = app.get('models').user;
 
@@ -15,6 +14,14 @@ User.sync({force: true}).then(function () {
 });
  */
 
+var express = require('express');
+var app = express();
+console.log()
+
 var User = app.get('models').user;
 
-User.findAll();
+var user = User.findAll({
+
+});
+
+res.json(user);

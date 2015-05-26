@@ -41,7 +41,7 @@ app.set('env',config.env);
 
 
 //load models in the app
-app.set('models', require('./models/index.js'));
+app.set('models', require('./models'));
 
 
 
