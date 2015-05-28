@@ -7,16 +7,19 @@
 var app = require('../app');
 var debug = require('debug')('ptproject:server');
 var http = require('http');
-
+var models =require("../models");
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+//var port = normalizePort(process.env.PORT || '3000');
+
+var port = process.env.PORT || '3000';
+
 app.set('port', port);
 
 //load model
-//require("./../models/index.js");
+models.sequelize.sync().then(function(){
 
 /**
  * Create HTTP server.
@@ -91,3 +94,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+});
