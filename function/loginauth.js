@@ -13,6 +13,6 @@ exports.getuser = function(req,res,next) {
     User.findAll({
     }).then(function(user){
         console.log(user);
-        res.json(user);
+        res.json({name:user[0].dataValues.first_name});
     })
 };
