@@ -42,3 +42,5 @@ models.user.sync().then(function(){
 }).catch(function(error){
     console.log('error');
 })
+
+//todo add the full unit test function

@@ -44,7 +44,9 @@ module.exports = function(sequelize, DataTypes) {
             classTasks: function(){
             },
             associate: function(models) {
-                sys_personbasicinfo.hasOne(models.sys.mobiledeviceinfo)
+                sys_personbasicinfo.hasOne(models.sys_mobiledeviceinfo);
+                sys_personbasicinfo.hasMany(models.sys_personcontactinfo);
+                sys_personbasicinfo.hasMany(models.pa_custemployee);
             }
         }
     });

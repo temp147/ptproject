@@ -3,7 +3,23 @@
  */
 
 module.exports = function(sequelize,DataTypes){
-    var sys_personcontactinfo = sequelize.define('sys_personcontactinfo',{
+    var pa_custemployee = sequelize.define('pa_custemployee',{
+        empid:      {
+            type:DataTypes.INTEGER,
+            autoIncrement:true,
+            primaryKey:true
+        },
+        tenantCode: {type:DataTypes.STRING(8)},
+        startdate:  {type:DataTypes.DATE},
+        enddate:    {type:DataTypes.DATE},
+        firstName:  {type:DataTypes.STRING(24)},
+        lastname:   {type:DataTypes.STRING(24)},
+        pername:    {
+            type:DataTypes.STRING(64),
+            set : function(val){
+                this.setDataValue('pername',val.firstName+' '+val.lastname);
+            }
+        },
         personid:   {
             type:DataTypes.INTEGER,
             primaryKey:true,
@@ -11,22 +27,13 @@ module.exports = function(sequelize,DataTypes){
                 model:'sys_personbasicinfo',
                 key: 'personid'
             }},
-        qqnumber: {type:DataTypes.INTEGER, validate:{
-            isNumeric:{
-                msg: "must be number"
-            }
-            }},
-        emailaddress:{type:DataTypes.STRING(64),validate:{
-            //check for email format
-            isEmail:true
-            }},
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
     }, {
         timestamps: true,
         paranoid:true,
         freezeTableName:true,
-        tableName:'sys_personcontactinfo'
+        tableName:'pa_custemployee'
     }, {
         indexes:[
             {}
@@ -41,9 +48,9 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                sys_personcontactinfo.belongsTo(models.sys_personbasicinfo)
+                pa_custemployee.belongsTo(models.sys_personbasicinfo)
             }
         }
     });
-    return sys_personcontactinfo;
+    return pa_custemployee;
 };

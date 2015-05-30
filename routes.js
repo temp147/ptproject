@@ -28,6 +28,6 @@ module.exports = function(app){
             });
         })
     );
-    //todo test using sequelize to get info
+    //test api for using sequelizejs ORM
     app.get('/user/:id',loginauth.getuser);
 };
