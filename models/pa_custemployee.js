@@ -9,9 +9,9 @@ module.exports = function(sequelize,DataTypes){
             autoIncrement:true,
             primaryKey:true
         },
-        tenantCode: {type:DataTypes.STRING(8)},
-        startdate:  {type:DataTypes.DATE},
-        enddate:    {type:DataTypes.DATE},
+        startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW},
+        enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31'},
+        tenantcode: {type:DataTypes.STRING(8)},
         firstName:  {type:DataTypes.STRING(24)},
         lastname:   {type:DataTypes.STRING(24)},
         pername:    {
@@ -48,7 +48,9 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                pa_custemployee.belongsTo(models.sys_personbasicinfo)
+                pa_custemployee.belongsTo(models.sys_personbasicinfo);
+                pa_custemployee.hasMany(models.om_empassignment);
+                pa_custemployee.hasMany(models.pa_custemplink)
             }
         }
     });
