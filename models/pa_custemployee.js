@@ -22,11 +22,13 @@ module.exports = function(sequelize,DataTypes){
         },
         personid:   {
             type:DataTypes.INTEGER,
-            primaryKey:true,
-            references:{
-                model:'sys_personbasicinfo',
-                key: 'personid'
-            }},
+            primaryKey:true
+//            ,
+//           references:{
+//                model:'sys_personbasicinfo',
+//                key: 'personid'
+//            }
+        },
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
     }, {
@@ -48,7 +50,7 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                pa_custemployee.belongsTo(models.sys_personbasicinfo);
+                pa_custemployee.belongsTo(models.sys_personbasicinfo,{foreignKey:'fk_personid}'});
                 pa_custemployee.hasMany(models.om_empassignment);
                 pa_custemployee.hasMany(models.pa_custemplink)
             }

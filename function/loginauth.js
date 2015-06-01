@@ -4,10 +4,7 @@
  */
 
 var models  = require('../models');
-
 var User = models.User;
-
-
 
 exports.getuser = function(req,res,next) {
     User.findAll({

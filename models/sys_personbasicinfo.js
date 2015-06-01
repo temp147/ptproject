@@ -5,12 +5,12 @@
 module.exports = function(sequelize, DataTypes) {
     var sys_personbasicinfo = sequelize.define('sys_personbasicinfo',{
         personid:   {type:DataTypes.INTEGER,autoIncrement:true,primaryKey:true},
-        firstName:  {type:DataTypes.STRING(24)},
+        firstname:  {type:DataTypes.STRING(24)},
         lastname:   {type:DataTypes.STRING(24)},
         pername:    {
-            type:DataTypes.STRING(64),
-            set : function(val){
-                this.setDataValue('pername',val.firstName+' '+val.lastname);
+            type:   DataTypes.STRING(64),
+            set :   function(){
+                this.setDataValue('pername',this.firstname+' '+this.lastname);
             }
         },
         phonenum:   {

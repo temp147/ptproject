@@ -13,6 +13,7 @@ var sequelize = new Sequelize(config.mysqldbname, config.mysqluser, config.mysql
         omitNull: true, logging: false });
 var db        = {};
 
+//load the models in the ./models  folders
 fs
     .readdirSync(__dirname)
     .filter(function(file) {

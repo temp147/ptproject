@@ -1,6 +1,8 @@
 /**
  * Created by root on 5/30/15.
  */
+var pa_custemployee = require('../models').pa_custemployee;
+
 module.exports = function(sequelize,DataTypes){
     var om_empassignment = sequelize.define('om_empassignment',{
         empassignmentid:      {
@@ -12,19 +14,20 @@ module.exports = function(sequelize,DataTypes){
         startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW},
         enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31'},
         empid:  {
-            type:DataTypes.INTEGER,
-            references:{
-                model:'pa_custemployee',
-                key:'empid'
-            }
+            type:DataTypes.INTEGER
+//            ,
+//            references:{
+//                model:pa_custemployee,
+//                key:'empid'
+//            }
         },
         orgunitid:  {type:DataTypes.INTEGER},
         bizunitid:  {type:DataTypes.INTEGER
         },
-        ismainassgn:   {type:DataTypes.STRING(0)},
-        isorgManager:  {type:DataTypes.STRING(0)},
+        ismainassgn:   {type:DataTypes.STRING(1)},
+        isorgManager:  {type:DataTypes.STRING(1)},
         assignindex:   {type:DataTypes.INTEGER},
-        isexpatriate:  {type:DataTypes.STRING(0)},
+        isexpatriate:  {type:DataTypes.STRING(1)},
         status:     {type:DataTypes.STRING(16)},
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
@@ -47,7 +50,7 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                om_empassignment.belongsTo(models.pa_custemployee)
+                om_empassignment.belongsTo(models.pa_custemployee,{foreignKey:'fk_empid'})
             }
         }
     });

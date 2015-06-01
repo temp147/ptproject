@@ -7,10 +7,11 @@ module.exports = function(sequelize,DataTypes){
         personid:   {
             type:DataTypes.INTEGER,
             primaryKey:true,
-            references:{
-                model:'sys_personbasicinfo',
-                key: 'personid'
-            }},
+//            references:{
+//                model:'sys_personbasicinfo',
+//                key: 'personid'
+//                }
+        },
         qqnumber: {type:DataTypes.INTEGER, validate:{
             isNumeric:{
                 msg: "must be number"
@@ -41,7 +42,7 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                sys_personcontactinfo.belongsTo(models.sys_personbasicinfo)
+                sys_personcontactinfo.belongsTo(models.sys_personbasicinfo,{foreinKey:'fk_personid'})
             }
         }
     });

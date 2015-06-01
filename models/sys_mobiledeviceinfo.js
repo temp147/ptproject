@@ -1,4 +1,7 @@
 /**
+ * Created by root on 6/1/15.
+ */
+/**
  * Created by root on 5/30/15.
  */
 
@@ -7,10 +10,11 @@ module.exports = function(sequelize,DataTypes){
         devicecode: {type:DataTypes.INTEGER,autoIncrement:true,primaryKey:true},
         personid:   {
             type:DataTypes.INTEGER,
-            references:{
-                model:'sys_personbasicinfo',
-                key: 'personid'
-        }},
+//            references:{
+//               model:'sys_personbasicinfo',
+//                key: 'personid'
+//           }
+        },
         devicetype: {type:DataTypes.STRING(64), validate:{
             isIn:{
                 args:[['andorid','ios','winphone']],
@@ -39,7 +43,7 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                sys_mobiledeviceinfo.belongsTo(models.sys_personbasicinfo)
+                sys_mobiledeviceinfo.belongsTo(models.sys_personbasicinfo,{foreignKey:'fk_personid'})
             }
         }
     });
