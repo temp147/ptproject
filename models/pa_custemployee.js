@@ -11,18 +11,19 @@ module.exports = function(sequelize,DataTypes){
         },
         startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW},
         enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31'},
-        tenantcode: {type:DataTypes.STRING(8)},
-        firstName:  {type:DataTypes.STRING(24)},
-        lastname:   {type:DataTypes.STRING(24)},
+        tenantcode: {type:DataTypes.STRING(8),allownull:false},
+        firstname:  {type:DataTypes.STRING(24),defaultValue:''},
+        lastname:   {type:DataTypes.STRING(24),defaultValue:''},
         pername:    {
             type:DataTypes.STRING(64),
-            set : function(val){
-                this.setDataValue('pername',val.firstName+' '+val.lastname);
+            set : function(){
+                this.setDataValue('pername',this.firstname+' '+this.lastname);
             }
         },
         personid:   {
             type:DataTypes.INTEGER,
-            primaryKey:true
+            primaryKey:true,
+            allowNull: false
 //            ,
 //           references:{
 //                model:'sys_personbasicinfo',

@@ -14,13 +14,14 @@ module.exports = function(sequelize,DataTypes){
         tenantcode: {type:DataTypes.STRING(8)},
         empid:{
             type:DataTypes.INTEGER,
+            allowNull: false,
             reference:{
                 model:'pa_custemployee',
                 key:'empid'
             }
         },
-        entrylinkage:{type:DataTypes.STRING(128)},
-        linkagetype:{type:DataTypes.STRING(8)},
+        entrylinkage:{type:DataTypes.STRING(128),allowNull:false},
+        linkagetype:{type:DataTypes.STRING(8),allowNull:false},
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
     }, {

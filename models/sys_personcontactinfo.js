@@ -6,7 +6,8 @@ module.exports = function(sequelize,DataTypes){
     var sys_personcontactinfo = sequelize.define('sys_personcontactinfo',{
         personid:   {
             type:DataTypes.INTEGER,
-            primaryKey:true,
+            primaryKey:true
+//            ,
 //            references:{
 //                model:'sys_personbasicinfo',
 //                key: 'personid'

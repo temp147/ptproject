@@ -10,20 +10,20 @@ module.exports = function(sequelize,DataTypes){
             autoIncrement:true,
             primaryKey:true
         },
-        tenantcode: {type:DataTypes.STRING(8)},
-        startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW},
-        enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31'},
+        tenantcode: {type:DataTypes.STRING(8),allowNull: false},
+        startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW,allowNull: false},
+        enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31',allowNull: false},
         empid:  {
-            type:DataTypes.INTEGER
+            type:DataTypes.INTEGER,
+            allowNull: false
 //            ,
 //            references:{
 //                model:pa_custemployee,
 //                key:'empid'
 //            }
         },
-        orgunitid:  {type:DataTypes.INTEGER},
-        bizunitid:  {type:DataTypes.INTEGER
-        },
+        orgunitid:  {type:DataTypes.INTEGER,allowNull: false},
+        bizunitid:  {type:DataTypes.INTEGER,allowNull: false},
         ismainassgn:   {type:DataTypes.STRING(1)},
         isorgManager:  {type:DataTypes.STRING(1)},
         assignindex:   {type:DataTypes.INTEGER},

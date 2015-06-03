@@ -1,26 +1,26 @@
 /**
  * Created by root on 6/1/15.
  */
-/**
- * Created by root on 5/30/15.
- */
 
 module.exports = function(sequelize,DataTypes){
     var sys_mobiledeviceinfo = sequelize.define('sys_mobiledeviceinfo',{
         devicecode: {type:DataTypes.INTEGER,autoIncrement:true,primaryKey:true},
         personid:   {
             type:DataTypes.INTEGER,
+            allowNull: false
 //            references:{
-//               model:'sys_personbasicinfo',
-//                key: 'personid'
+//               model:sys_personbasicinfo,
+//                key: "personid"
 //           }
         },
         devicetype: {type:DataTypes.STRING(64), validate:{
-            isIn:{
-                args:[['andorid','ios','winphone']],
-                msg: "must be in andorid,ios, winphone"
-            }
-        }},
+                isIn:{
+                    args:[['andorid','ios','winphone']],
+                    msg: "must be in andorid, ios, winphone"
+                }
+            },
+            allowNull: false
+        },
         softversion:{type:DataTypes.STRING(64)},
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
