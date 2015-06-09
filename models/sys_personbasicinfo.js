@@ -40,9 +40,7 @@ module.exports = function(sequelize, DataTypes) {
         tableName:'sys_personbasicinfo'
     },{
         instanceMethods: {
-            countTasks: function() {
-                // how to implement this method ?
-            }
+
         },
         classMethods:{
             classTasks: function(){
