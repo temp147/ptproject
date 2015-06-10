@@ -17,9 +17,11 @@ module.exports = function(sequelize, DataTypes) {
             type:DataTypes.STRING(64),
             validate:{
                 isNumeric: {
-        msg: "must be the phone number with an format like 13512345678"
-    }
-            }
+                msg: "must be the phone number with an format like 13512345678"
+                }
+            },
+            unique:true
+
         },
         password:   {
             type:DataTypes.STRING(256),

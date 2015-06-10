@@ -50,7 +50,8 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                om_empassignment.belongsTo(models.pa_custemployee,{foreignKey:'fk_empid'})
+                om_empassignment.belongsTo(models.pa_custemployee,{foreignKey:'fk_empid'});
+                om_empassignment.belongsTo(models.om_orgunit)
             }
         }
     });

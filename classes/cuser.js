@@ -24,7 +24,7 @@ function encryptPassword (password,rawsalt) {
             .update(password)
             .digest('hex');
     } catch (err) {
-        return '';
+        return null;
     }
 }
 
@@ -81,13 +81,14 @@ var cuser={
     getauthinfobyphonenum : function(phonenum,plain_password,cb){
         sys_personbasicinfo.findOne({
             where:{
-                phonenum:   phonenum
+                phonenum:phonenum
             }
         })
             .then(function(sys_user){
                 if(sys_user&&plain_password){
                     if(sys_user.password==encryptPassword(plain_password,sys_user.personid))
-                        cb('success',null)
+                        cb(sys_user,null);
+                    else cb(null,'wrong password')
                 }
                 else{cb(null,'empty')}
             })
@@ -114,13 +115,22 @@ var cuser={
             .then(function (sys_user) {
                 if(sys_user){
                     sys_user.password=encryptPassword(plain_password,sys_user.personid);
-                    sys_user.save()
-                        .then(function(){cb('success',null)})
-                        .catch(function(err){
-                            cb(null,err);
-                        });
+                    if(sys_user.password){
+                        sys_user.save()
+                            .then(function(){
+                                cb('success',null)
+                            })
+                            .catch(function(err){
+                                cb(null,err);
+                            });
+                    }
+                    else {
+                        cb(null,'set password failed');
+                    }
                 }
-                else {cb(null,'empty')}
+                else {
+                    cb(null,'empty');
+                }
             })
             .catch(function(err){
                 cb(null,err);

@@ -4,7 +4,7 @@
 /**
  * Created by root on 6/1/15.
  */
-//todo add the full unit test function
+
 
 var expect = require('expect.js');
 var models = require('../../models/index');
@@ -25,7 +25,7 @@ describe('sys_personbasicinfo', function () {
                 lastname:'Smith',
                 pername:'1111',
                 password:'12345678',
-                phonenum:'13825354499',
+                phonenum:'138'+Math.round(Math.random() * 10000)+Math.round(Math.random() * 10000),
                 creator:'mocha',
                 modifier:'mocha'
             });
