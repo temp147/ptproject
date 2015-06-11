@@ -28,13 +28,13 @@ module.exports = function(sequelize,DataTypes){
             type:DataTypes.STRING(8),
             primaryKey:true
         },
-        tenantdbid: {type:DataTypes.INTEGER},
-        custcode:  {type:DataTypes.STRING(8)},
+        tenantdbid: {type:DataTypes.INTEGER,allowNull: false},
+//        custcode:  {type:DataTypes.STRING(8),allowNull: false},
         domainname:    {type:DataTypes.STRING(64)},
         tenantcontent:  {type:DataTypes.STRING(256)},
-        adminname:   {type:DataTypes.STRING(64)},
-        toouid:     {type:DataTypes.STRING(64)},
-        relationid: {type:DataTypes.STRING(64)},
+        adminname:   {type:DataTypes.STRING(64),allowNull: false},
+        adminmailadd:     {type:DataTypes.STRING(64),allowNull: false},
+        tenanttype: {type:DataTypes.STRING(16)},
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
     }, {
@@ -56,9 +56,9 @@ module.exports = function(sequelize,DataTypes){
             classTasks: function(){
             },
             associate: function(models) {
-                sys_tenantbasicinfo.belongsTo(models.om_orgunit);
+                sys_tenantbasicinfo.hasMany(models.om_versioninfo);
             }
         }
     });
-    return om_ourelation;
+    return sys_tenantbasicinfo;
 };

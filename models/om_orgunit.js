@@ -12,9 +12,9 @@ module.exports = function(sequelize,DataTypes){
         bizunitid:  {type:DataTypes.STRING(64)},
         startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW,allowNull: false},
         enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31',allowNull: false},
-        tenantcode: {type:DataTypes.STRING(8)},
+        tenantcode: {type:DataTypes.STRING(8),allowNull: false},
         outypeid:   {type:DataTypes.INTEGER},
-        orgunitname:{type:DataTypes.STRING(64)},
+        orgunitname:{type:DataTypes.STRING(64),allowNull: false},
         orgunitsimname: {type:DataTypes.STRING(64)},
         costcenterid:   {type:DataTypes.INTEGER},
         description:    {type:DataTypes.INTEGER},
@@ -40,6 +40,7 @@ module.exports = function(sequelize,DataTypes){
             },
             associate: function(models) {
                 om_orgunit.hasMany(models.om_empassignment);
+                om_orgunit.hasMany(models.om_relation);
             }
         }
     });

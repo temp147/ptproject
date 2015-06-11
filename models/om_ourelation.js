@@ -11,11 +11,11 @@ module.exports = function(sequelize,DataTypes){
         },
         startdate:  {type:DataTypes.DATE,defaultValue:DataTypes.NOW,allowNull: false},
         enddate:    {type:DataTypes.DATE,defaultValue:'2099-12-31',allowNull: false},
-        tenantcode: {type:DataTypes.STRING(8)},
-        orgstrplanid:  {type:DataTypes.STRING(64)},
-        fromouid:   {type:DataTypes.INTEGER},
-        toouid:     {type:DataTypes.STRING(64)},
-        relationid: {type:DataTypes.STRING(64)},
+        tenantcode: {type:DataTypes.STRING(8),allowNull: false},
+        orgstrplanid:  {type:DataTypes.STRING(64),allowNull: false},
+        fromouid:   {type:DataTypes.INTEGER,allowNull: false},
+        toouid:     {type:DataTypes.INTEGER,allowNull: false},
+        relationtypeid: {type:DataTypes.STRING(64)},
         creator:    {type:DataTypes.STRING(40)},
         modifier:   {type:DataTypes.STRING(40)}
     }, {
