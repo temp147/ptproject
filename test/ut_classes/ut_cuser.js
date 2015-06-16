@@ -3,8 +3,11 @@
  */
 
 var expect = require('expect.js');
-var user = require('../../classes/cuser');
+var Cuser = require('../../classes/cuser');
 var models = require('../../models/index');
+
+
+var user = new Cuser();
 
 var sys_user = models.sys_personbasicinfo;
 //test the basic function of cuser
@@ -12,21 +15,7 @@ describe('cuser', function () {
     var phonenum;
 //get personid 1  phone number
     before(function(done){
-        sys_user.findOne({
-            where:{
-                personid:'1'
-            }
-        })
-            .then(function(result){
-//                console.log(result.dataValues.pername);
-                phonenum=sys_user.dataValues.phonenum;
-                console.log(phonenum);
-                done();
-            })
-            .catch(function(err){
-//                console.log(err.toString());
-                done();
-            });
+        done();
     });
 
     it('user set password by id' ,function(done){
