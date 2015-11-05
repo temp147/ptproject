@@ -29,6 +29,9 @@ var secret = config.jwtsecret;
 //var routes = require('./routes/index');
 //var users = require('./routes/users');
 
+var mongodb = require('./function/mongoInit');
+
+
 var app = express();
 
 // view engine setup
@@ -56,7 +59,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //app.use('/', routes);l
 //app.use('/users', users);
-
+//initial mongodb using mongoose;
+mongodb.init(app);
 
 app.use(function(err, req, res, next){
     if (err.constructor.name === 'UnauthorizedError') {
